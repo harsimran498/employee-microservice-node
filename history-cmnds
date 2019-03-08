@@ -1,0 +1,355 @@
+ 273  /usr/share/man/man1/npm.1.gz npm -v
+  274  rm -rf /usr/share/man/man1/npm.1.gz
+  275  npm -v
+  276  find / -name npm
+  277  cd
+  278  find / -name npm
+  279  yum install npm
+  280  cd /etc/
+  281  ls
+  282  cd yum.repos.d
+  283  ls
+  284  ls -lrt
+  285  find / --name npm-3.10.10-1.6.16.0.1.el7.x86_64
+  286  find / -name npm-3.10.10-1.6.16.0.1.el7.x86_64
+  287  find / -name npm-3.10.10-1.6.16.0.1.el7.x86_64*
+  288  cd /
+  289  find . -name npm*
+  290  ./root/.npm/ npm -v
+  291  npm -v
+  292  cd /usr/share/
+  293  ls -ltr
+  294  cd man
+  295  ls
+  296  ls -lrt
+  297  cd man1
+  298  ls -lrt
+  299  ls npm*
+  300  npm -v
+  301  rm -rf npm*
+  302  ls npm*
+  303  cd
+  304  yum install npm
+  305  find / -name npm*
+  306  find / -name npm-3*
+  307  find / -name npm-*
+  308  grep -ilt npm-3.10.10-1.6.16.0.1.el7.x86_64
+  309  grep -ilr npm-3.10.10-1.6.16.0.1.el7.x86_64
+  310  clear
+  311  npm -v
+  312  yum install npm
+  313  yum erase npm
+  314  yum install npm
+  315  clear
+  316  npm -v
+  317  nodejs -v
+  318  node -v
+  319  ls
+  320  cd /home/ec2-user/
+  321  ls
+  322  cd employee-microservice-node/
+  323  ls
+  324  npm install
+  325  npm starrt
+  326  npm start
+  327  cd ..
+  328  ls
+  329  rm -rf employee-microservice-node
+  330  git clone https://github.com/harsimran498/employee-microservice-node.git
+  331  ls
+  332  cd employee-microservice-node/
+  333  npm install
+  334  npm start
+  335  netstat -pan | grep 8000
+  336  ps -ef | grep node
+  337  kill -9 8168
+  338  npm start
+  339  ls -ltr
+  340  systemctl status jenkins
+  341  systemctl restart jenkins
+  342  df -h
+  343  free
+  344  /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=4024
+  345  /sbin/mkswap /var/swap.1
+  346  chmod 600 /var/swap.1
+  347  /sbin/swapon /var/swap.1
+  348  free
+  349  systemctl status jenkins
+  350  docker images
+  351  docker ps -a
+  352  docker ps
+  353  docker images
+  354  docker images
+  355  docker ps
+  356  docker ps
+  357
+  358  docker ps
+  359  docker logs c762da5508aa
+  360  docker logs c762da5508aa
+  361  ps -ef | grep npm
+  362  docker ps
+  363  docker stop c762da5508aa
+  364  docker rm c762da5508aa
+  365  docker ps
+  366  pwd
+  367  sonar-scanner
+  368  vi /etc/profile
+  369  ls
+  370  sonar-scanner --version
+  371  whereis sonar-scanner
+  372  pwd
+  373  ls -lrt
+  374  sudo sonar-scanner
+  375  cd
+  376  cd /home/ec2-user/
+  377  ls
+  378  cd employee-microservice-node/
+  379  ls
+  380  cd ..
+  381  cd sonar-scanner/
+  382  ls
+  383  cp -R sonar-scanner-3.3.0.1492-linux /var/lib/jenkins/workspace/Project
+  384  ls
+  385  cd /var/lib/jenkins/workspace/Project
+  386  ls
+  387  sonar-scanner
+  388  sh sonar-scanner
+  389  clear
+  390  ls
+  391  cd
+  392  ls -lart
+  393  vi /etc/profile
+  394  vi .bashrc
+  395  vi .bash_profile
+  396  cat /etc/profile
+  397  echo $PATH
+  398  clear
+  399  ls -lart
+  400  vi .bash_profile
+  401  source .bash_profile
+  402  pwd
+  403  clear
+  404  cd /data
+  405  ls
+  406  ls -lart
+  407  df
+  408  df -h
+  409  docker run --link sonarqube:sonarqube --entrypoint /opt/sonar-runner-2.4/bin/sonar-runner -e SONAR_USER_HOME=/data/.sonar-cache -v `pwd`:/data sebp/sonar-runner      -Dsonar.host.url=http://sonarqube:9000      -Dsonar.jdbc.url=jdbc:h2:tcp://sonarqube/sonar      -Dsonar.jdbc.username=sonar      -Dsonar.jdbc.password=sonar      -Dsonar.jdbc.driverClassName=org.h2.Driver      -Dsonar.embeddedDatabase.port=9092
+  410   -Dsonar.projectKey=my:project      -Dsonar.projectName=My project
+  411  clear
+  412  docker ps
+  413  docker images
+  414  docker run -d --name sonarqube -p 9000:9000 -e SONAR_USER_HOME=/data/.sonar-cache -v `pwd`:/data sebp/sonar-runner      -Dsonar.host.url=http://sonarqube:9000      -Dsonar.jdbc.url=jdbc:h2:tcp://sonarqube/sonar      -Dsonar.jdbc.username=sonar      -Dsonar.jdbc.password=sonar      -Dsonar.jdbc.driverClassName=org.h2.Driver      -Dsonar.embeddedDatabase.port=9092
+  415   -Dsonar.projectKey=my:project \
+  416  docker rmi 8efe1a5ab84b
+  417  docker ps -a
+  418  docker rm a159d2b6eaa9
+  419  docker images
+  420  docker rmi 8efe1a5ab84b
+  421  clear
+  422  docker run -d --name sonarqube -p 9000:9000 -e SONAR_USER_HOME=/data/.sonar-cache -v `pwd`:/data sebp/sonar-runner      -Dsonar.host.url=http://sonarqube:9000      -Dsonar.jdbc.url=jdbc:h2:tcp://sonarqube/sonar      -Dsonar.jdbc.username=sonar      -Dsonar.jdbc.password=sonar      -Dsonar.jdbc.driverClassName=org.h2.Driver      -Dsonar.embeddedDatabase.port=9092
+  423   -Dsonar.projectKey=my:project      -Dsonar.projectName=My project
+  424  docker images
+  425  docker ps
+  426  docker ps -a
+  427  docker ps
+  428  docker start ec350599f15d
+  429  docker ps
+  430  docker ps
+  431  docker images
+  432  docker ps -a
+  433  docker rm ec350599f15d
+  434  docker images
+  435  docker rmi 8efe1a5ab84b
+  436  clear
+  437  docker images
+  438  docker run -d --name sonarqube -p 9000:9000 -e SONAR_USER_HOME=/data/.sonar-cache -v `pwd`:/data sebp/sonar-runner      -Dsonar.host.url=http://sonarqube:9000      -Dsonar.jdbc.url=jdbc:h2:tcp://sonarqube/sonar      -Dsonar.jdbc.username=sonar      -Dsonar.jdbc.password=sonar      -Dsonar.jdbc.driverClassName=org.h2.Driver      -Dsonar.embeddedDatabase.port=9092
+  439   -Dsonar.projectKey=my:project
+  440  docker ps
+  441  docker images
+  442  docker ps
+  443  docker ps -a
+  444  docker start fae638fe77b2
+  445  docker ps -a
+  446  docker images
+  447  docker ps -a
+  448  docker ps
+  449  docker rm fae638fe77b2
+  450  docker rmi 8efe1a5ab84b
+  451  clear
+  452  cd
+  453  ls
+  454  vi Dockerfile.yml
+  455  docker run -d --name image -p 9000:9000 sonarqube -e SONAR_USER_HOME=/data/.sonar-cache -v `pwd`:/data sebp/sonar-runner      -Dsonar.host.url=http://sonarqube:9000      -Dsonar.jdbc.url=jdbc:h2:tcp://sonarqube/sonar      -Dsonar.jdbc.username=sonar      -Dsonar.jdbc.password=sonar      -Dsonar.jdbc.driverClassName=org.h2.Driver      -Dsonar.embeddedDatabase.port=9092      -Dsonar.projectName=My project
+  456  docker ps
+  457  docker images
+  458  docker ps
+  459  docker ps -a
+  460  clear
+  461  docker ps -a
+  462  netstat -pan | grep 9000
+  463  ls
+  464  docker build -t sonar .
+  465  docker build -t sonar -f Dockerfile
+  466  docker build -t sonar -f Dockerfile.yml .
+  467  docker images
+  468  docker ps
+  469  clear
+  470  docker images
+  471  docker ps -a
+  472  docker ps
+  473  docker run -d --name sonarqube -p 9000:9000 -e SONAR_USER_HOME=/data/.sonar-cache -v `pwd`:/data sebp/sonar-runner      -Dsonar.host.url=http://sonarqube:9000      -Dsonar.jdbc.url=jdbc:h2:tcp://sonarqube/sonar      -Dsonar.jdbc.username=sonar      -Dsonar.jdbc.password=sonar      -Dsonar.jdbc.driverClassName=org.h2.Driver      -Dsonar.embeddedDatabase.port=9092
+  474   -Dsonar.projectKey=my:project \
+  475  docker ps
+  476  docker run -d --name sonarqube -p 9000:9000 -e SONAR_USER_HOME=/data/.sonar-cache -v `pwd`:/data sebp/sonar-runner      -Dsonar.host.url=http://sonarqube:9000      -Dsonar.jdbc.url=jdbc:h2:tcp://sonarqube/sonar      -Dsonar.jdbc.username=sonar      -Dsonar.jdbc.password=sonar      -Dsonar.jdbc.driverClassName=org.h2.Driver \
+  477       -Dsonar.embeddedDatabase.port=9092      -Dsonar.projectName=My project
+  478   docker ps -a
+  479  docker rm c073270ef990 acd44570feb1
+  480  docker images
+  481  docker rmi 4ac40219d745 8efe1a5ab84b
+  482  clear
+  483  dockrr ps
+  484  docker images
+  485  docker ps -a
+  486  clear
+  487  docker images
+  488  docker run -d --name sonarqube -p 9000:9000 sonarqube
+  489  docker ps
+  490  curl 0.0.0.0:9000
+  491  docker ps
+  492  pwd
+  493  ls -ltr
+  494  mkdir sonar-scanner
+  495  cd sonar-scanner/
+  496  wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
+  497  yum install wget -y
+  498  wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
+  499  ls -ltr
+  500  unzip sonar-scanner-cli-3.3.0.1492-linux.zip
+  501  yum install unzip -y
+  502  unzip sonar-scanner-cli-3.3.0.1492-linux.zip
+  503  ls
+  504  cd sonar-scanner-3.3.0.1492-linux/
+  505  ls -ltr
+  506  cd conf/
+  507  ls -ltr
+  508  vi sonar-scanner.properties
+  509  cd ../bin/
+  510  pwd
+  511  vi /etc/profile
+  512  source /etc/profile
+  513  vi /etc/profile
+  514  source /etc/profile
+  515  ll /home/ec2-user/sonar-scanner/sonar-scanner-3.3.0.1492-linux/bin
+  516  vi /etc/profile
+  517  echo $PATH
+  518  export PATH=$PATH:/home/ec2-user/sonar-scanner/sonar-scanner-3.3.0.1492-linux/bin
+  519  echo $PATH
+  520  vi /etc/profile
+  521  source /etc/profile
+  522  cd
+  523  ls -lart
+  524  vi .bash_profile
+  525  vi /etc/profile
+  526  source /etc/profile
+  527  pwd
+  528  cd /home/ec2-user/
+  529  cd employee-microservice-node/
+  530  ls -ltr
+  531  sonar-scanner
+  532  vi /home/ec2-user/sonar-scanner/sonar-scanner-3.3.0.1492-linux/conf/sonar-scanner.properties
+  533  sonar-scanner
+  534  echo $PATH
+  535  cd /var/lib/jenkins/workspace/Project
+  536  sonar-scanner
+  537  echo $PATH
+  538  echo $PATH
+  539  ./sonar-scanner
+  540  sonar-scanner
+  541  pwd
+  542  echo $PATH
+  543  ls
+  544  whereis sonarqube
+  545  docker ps
+  546  docker exec -it ab1ea7bc475b /bin/bash
+  547  ls
+  548  cd sonar-scanner
+  549  ls
+  550  cd sonar-scanner-3.3.0.1492-linux
+  551  ls
+  552  cd conf
+  553  lsa
+  554  ls
+  555  vi sonar-scanner.properties
+  556  cd /var/lib/jenkins/
+  557  ls
+  558  cd work
+  559  cd workspace/
+  560  ls
+  561  clear
+  562  ls
+  563  cd Project
+  564  ls
+  565  ls -lart
+  566  cd
+  567  ls
+  568  cd /home/ec2-user/
+  569  ls
+  570  cd employee-microservice-node/
+  571  ls
+  572  ls -alrt
+  573  cd ..
+  574  ls
+  575  cd sonar-scanner/
+  576  ls
+  577  cd sonar-scanner-3.3.0.1492-linux
+  578  ls
+  579  cd
+  580  grep -ilr .sonar
+  581  cd .sonar
+  582  ls
+  583  cd _tmp
+  584  ls
+  585  ls -lart
+  586  cd
+  587  clear
+  588  cdc /var/lib/jenkins/workspace/
+  589  s
+  590  ls
+  591  cd /var/lib/jenkins/workspace/
+  592  ls
+  593  cd Project
+  594  ls -lart
+  595  cd .scannerwork/
+  596  ls -ltr
+  597  cat report-task.txt
+  598  docker images
+  599  docker image tag devops/employee-microservice-nodenpminstall:latest devops/employee-microservice-nodenpminstall:Dev.1
+  600  docker images
+  601  docker images
+  602  clear
+  603   docker run -d -p 8081:8081 --name nexus sonatype/nexus:oss
+  604  docker images
+  605  docker ps
+  606  curl 0.0.0.0:8081
+  607  docker ps
+  608  nexus --version
+  609  docker inspect 1bb426aca3e3
+  610  free -g
+  611  top
+  612  docker ps
+  613  systemctl status jenkins
+  614  cd /var/lib/jenkins/workspace/
+  615  ls
+  616  cd Project
+  617  ls
+  618  systemctl restart jenkins
+  619  ps -ef | grep jenkins
+  620  systemctl status jenkins
+  621  ls
+  622  cat Dockerfile
+  623  ls
+  624  cat Dockerfile_App
+  625  ls
+  626  history
+[root@ip-172-31-47-194 Project]#
