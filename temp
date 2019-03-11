@@ -1,0 +1,20 @@
+docker login -u admin -p admin123 url:port
+docker tag 
+
+docker push 34.73.184.207:8083/something
+====
+first steps: to setup build box :
+
+
+things to do after server reboot:
+
+sonarqube scanner container - up on 9000 port
+
+increase swap memory for sonar to run;
+
+/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=4024
+/sbin/mkswap /var/swap.1
+chmod 600 /var/swap.1
+/sbin/swapon /var/swap.1
+ 
+ 
