@@ -1,0 +1,47 @@
+Pre reqs of instance:
+
+docker login -u admin -p admin123 url:port
+docker tag 
+
+docker push 34.73.184.207:8083/something
+
+
+====
+first steps: to setup build box :
+
+
+things to do after server reboot:
+increase swap memory for sonar to run;
+
+/bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=4024
+/sbin/mkswap /var/swap.1
+chmod 600 /var/swap.1
+/sbin/swapon /var/swap.1
+ 
+
+docker run -d --name sonarqube \
+    -p 9000:9000 \
+    -v /opt/sonarqube/conf:/opt/sonarqube/conf \
+    -v /opt/sonarqube/data:/opt/sonarqube/data \
+    -v /opt/sonarqube/logs:/opt/sonarqube/logs \
+    -v /opt/sonarqube/extensions:/opt/sonarqube/extensions \
+    sonarqube
+	
+	chmod 777 to all these volumes
+	
+create new proj and new key and new Quality profile..
+sonar-scanner properties change - enter new key for your project..
+
+
+sonar-scanner \
+  -Dsonar.projectKey=employee \
+  -Dsonar.sources=. \
+  -Dsonar.host.url=http://18.223.164.198:9000 \
+  -Dsonar.login=employee
+  
+  installed sonarts plugin in the sonar console - marketplace..
+ 
+
+
+ 
+ 
