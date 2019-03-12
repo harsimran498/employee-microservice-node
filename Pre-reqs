@@ -39,9 +39,9 @@ sonar-scanner \
   -Dsonar.host.url=http://18.223.164.198:9000 \
   -Dsonar.login=employee
   
-  installed sonarts plugin in the sonar console - marketplace..
+  installed sonars plugin in the sonar console - marketplace..
  
-
+change authenticatoin for sonar in jenkins configure system again and enter new auth toker..
 
  
  
