@@ -40,4 +40,6 @@ sonar-scanner \
 change authenticatoin for sonar in jenkins configure system again and enter new auth toker..
 
  
- 
+ ====
+ user-pwd for nexus - admin/admin123
+ =====
