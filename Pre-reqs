@@ -21,10 +21,6 @@ chmod 600 /var/swap.1
 
 docker run -d --name sonarqube \
     -p 9000:9000 \
-    -v /opt/sonarqube/conf:/opt/sonarqube/conf \
-    -v /opt/sonarqube/data:/opt/sonarqube/data \
-    -v /opt/sonarqube/logs:/opt/sonarqube/logs \
-    -v /opt/sonarqube/extensions:/opt/sonarqube/extensions \
     sonarqube
 	
 	chmod 777 to all these volumes
