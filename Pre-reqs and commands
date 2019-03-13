@@ -19,7 +19,10 @@ cmnd to test nexus connec -
 docker login -u admin -p admin123 34.73.184.207:8083
 
 docker push 34.73.184.207:8083/devops/employee-microservice-nodenpminstall
-----
+
+------------------------
+Deployment server steps:
+
 To pull docker image from nexus in deployment server :
 cmnds:
 make connectionn to 8083 for pull :
@@ -28,8 +31,13 @@ make connectionn to 8083 for pull :
 ans then run the cmnd  : 
 docker pull 34.73.184.207:8082/employee-microservice-nodenpminstall:Dev.79
 
+Check the image:
+docker images
 
-====
+Run the image as container:
+docker run -p 8000:8000 34.73.184.207:8083/employee-microservice-nodenpminstall:Dev.79
+
+===========================================================================================
 
 first steps: to setup build box :
 
