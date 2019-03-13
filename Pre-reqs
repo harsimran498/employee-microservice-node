@@ -12,6 +12,8 @@ $ sudo vim /usr/lib/systemd/system/docker.service
 
 #ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
 ExecStart=/usr/bin/dockerd --insecure-registry 34.73.184.207:8083
+ 
+cmnd to test nexus connec - docker login -u admin -p admin123 34.73.184.207:8083
 
 
 ====
