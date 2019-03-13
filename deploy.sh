@@ -1,6 +1,6 @@
 #!/usr/bin/sh
 
-su - ec2-user
+
 id
 cd /etc/ansible
-ansible-playbook -i hosts docker.yml
+sudo su ec2-user -c 'ansible-playbook -i hosts docker.yml'
