@@ -19,6 +19,15 @@ cmnd to test nexus connec -
 docker login -u admin -p admin123 34.73.184.207:8083
 
 docker push 34.73.184.207:8083/devops/employee-microservice-nodenpminstall
+----
+To pull docker image from nexus in deployment server :
+cmnds:
+make connectionn to 8083 for pull :
+
+/usr/bin/dockerd --insecure-registry 34.73.184.207:8083
+ans then run the cmnd  : 
+docker pull 34.73.184.207:8082/employee-microservice-nodenpminstall:Dev.79
+
 
 ====
 
