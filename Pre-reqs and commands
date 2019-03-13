@@ -29,7 +29,7 @@ make connectionn to 8083 for pull :
 
 /usr/bin/dockerd --insecure-registry 34.73.184.207:8083
 ans then run the cmnd  : 
-docker pull 34.73.184.207:8082/employee-microservice-nodenpminstall:Dev.79
+docker pull 34.73.184.207:8083/employee-microservice-nodenpminstall:Dev.79
 
 Check the image:
 docker images
