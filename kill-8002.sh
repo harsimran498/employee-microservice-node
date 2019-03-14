@@ -1,6 +1,8 @@
 #!/usr/bin/sh
-netstat -ltnp | grep -w ':8002' | awk -F "LISTEN" '{print $2}'|  awk -F "/" '{print $1}' |  xargs kill -9 &> /dev/null
-sleep 5
+#netstat -ltnp | grep -w ':8002' | awk -F "LISTEN" '{print $2}'|  awk -F "/" '{print $1}' |  xargs kill -9 &> /dev/null
+#sleep 5
+
+
 if [ $? -eq 0 ]
 then
   echo " Process killed running on port 8002 already"
