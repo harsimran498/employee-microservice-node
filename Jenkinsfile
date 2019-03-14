@@ -1,29 +1,31 @@
+   env.BUILD_BRANCH = "master"
+   env.BUILD_NAME = "devops/employee-microservice-node"
+   env.CONTAINER_NAME = "devops/employee-microservice-nodenpminstall"
+   env.DEPLOY_ENV = "DEV"
+   
     node() {
 	
-	
-	
-      stage('Checkout') {
+      stage('Checkout GIT Repository Master Branch') {
 			
-              checkout([$class: 'GitSCM', branches: [[name: "master"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '	ff27d625-f3c0-4d1a-84c1-931efe2f8fbd', url: 'https://github.com/harsimran498/employee-microservice-node.git']]])
+              checkout([$class: 'GitSCM', branches: [[name: "$BUILD_BRANCH"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '	ff27d625-f3c0-4d1a-84c1-931efe2f8fbd', url: 'https://github.com/harsimran498/employee-microservice-node.git']]])
 }
 
-/**
- 
 
-stage('NPM test'){
+
+stage('Run NPM Tests'){
       sh "npm install"
       sh "npm test "
      
   } 
   
-  stage('sonar analysis with sonar scanner'){
+  stage('Sonar Analysis with Sonar Scanner'){
       def scannerHome = tool 'Scanner'
       sh "cd ${workspace}"
       sh "${scannerHome}/bin/sonar-scanner"
      }
   
 
-  stage("Quality Gate"){
+  stage("Runnning Quality Gate Step"){
 	  sh "sleep 30s"
       withSonarQubeEnv('sonarqube') {
         env.SONAR_CE_TASK_URL = sh(returnStdout: true, script: """cat ${workspace}/.scannerwork/report-task.txt|grep -a 'ceTaskUrl'|awk -F '=' '{print \$2\"=\"\$3}'""")
@@ -38,37 +40,37 @@ stage('NPM test'){
             if (qualitygate.trim().equals("ERROR")) {
               error  "Quality Gate failure"
             }
-            echo  "Quality Gate success"
+            echo  "Quality Gate successfull"
         }
       }
 	}
 
 
-
-  stage('Docker Build'){
+  stage('Docker Build '){
       def workspace = pwd () 
-      sh "docker build -t devops/employee-microservice-node . "
+	  sh "echo $BUILD_NAME"
+      sh "docker build -t $BUILD_NAME . "
+	  
 } 
   
-  
-    stage('Docker Build'){
+    stage('Final Docker Build'){
       def workspace = pwd () 
-      sh "docker build -t devops/employee-microservice-nodenpminstall -f Dockerfile_App . "
+      sh "docker build -t $CONTAINER_NAME -f Dockerfile_App . "
      } 
   
-    stage('Docker Run'){
+    stage('Creating Docker Container - Docker Run'){
       def workspace = pwd () 
       sh "chmod 777 remove.sh"
-     
-      sh "docker run -d -p 8002:8000 devops/employee-microservice-nodenpminstall"
+      sh "./remove.sh"
+      sh "docker run -d -p 8002:8000 $CONTAINER_NAME"
       } 
   
 
 def userInput
 try {
     userInput = input(
-        id: 'Proceed1', message: 'Was this successful?', parameters: [
-        [$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you want to push this build to repo']
+        id: 'Proceed1', message: 'Are you Satisfied with results?', parameters: [
+        [$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you want to push this build to Nexus Repository Manager for Docker']
         ])
 } catch(err) { // input false
     def user = err.getCauses()[0].getUser()
@@ -89,13 +91,13 @@ node {
 
 
    stage ('Tag Docker Image') {
-      	    sh "docker image tag devops/employee-microservice-nodenpminstall:latest 34.73.184.207:8083/employee-microservice-nodenpminstall:Dev.${BUILD_NUMBER}"
+      	    sh "docker image tag $CONTAINER_NAME:latest 34.73.184.207:8083/$CONTAINER_NAME:$DEPLOY_ENV.${BUILD_NUMBER}"
       }
 
    stage ('Upload to Nexus') {
-      	    sh "docker push 34.73.184.207:8083/employee-microservice-nodenpminstall:Dev.${BUILD_NUMBER}"}
+      	    sh "docker push 34.73.184.207:8083/$CONTAINER_NAME:$DEPLOY_ENV.${BUILD_NUMBER}"}
       	   
-*/
+
 
 
 /** Run Ansible yaml - docker.yml placed in build box /etc/ansible/docker.yml with ec-user only */
@@ -105,9 +107,7 @@ node {
       	   sh "./deploy.sh"
       }   
       	    
-      	    
-      	    
-      	    
+      	   
       	    
       	    
 }
