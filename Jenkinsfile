@@ -7,7 +7,8 @@
               checkout([$class: 'GitSCM', branches: [[name: "master"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '	ff27d625-f3c0-4d1a-84c1-931efe2f8fbd', url: 'https://github.com/harsimran498/employee-microservice-node.git']]])
 }
 
-
+/**
+ 
 
 stage('NPM test'){
       sh "npm install"
@@ -57,8 +58,10 @@ stage('NPM test'){
   
     stage('Docker Run'){
       def workspace = pwd () 
+      sh "chmod 777 remove.sh"
+     
       sh "docker run -d -p 8002:8000 devops/employee-microservice-nodenpminstall"
-      }
+      } 
   
 
 def userInput
@@ -84,7 +87,6 @@ node {
     } 
 } 
 
-/** to tag the image */
 
    stage ('Tag Docker Image') {
       	    sh "docker image tag devops/employee-microservice-nodenpminstall:latest 34.73.184.207:8083/employee-microservice-nodenpminstall:Dev.${BUILD_NUMBER}"
@@ -92,4 +94,20 @@ node {
 
    stage ('Upload to Nexus') {
       	    sh "docker push 34.73.184.207:8083/employee-microservice-nodenpminstall:Dev.${BUILD_NUMBER}"}
+      	   
+*/
+
+
+/** Run Ansible yaml - docker.yml placed in build box /etc/ansible/docker.yml with ec-user only */
+
+   stage ('Dry-Run ansible playbook') {
+           sh "chmod 777 deploy.sh"
+      	   sh "./deploy.sh"
+      }   
+      	    
+      	    
+      	    
+      	    
+      	    
+      	    
 }
