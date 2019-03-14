@@ -1,0 +1,21 @@
+---
+- hosts: node1
+  become: True
+
+  tasks:
+  - name: Docker login to nexus
+    docker_login:
+      registry: 34.73.184.207:8083
+      username: admin
+      password: admin123
+
+  - name: Pull an image from nexus
+    docker_image:
+      name: 34.73.184.207:8083/employee-microservice-nodenpminstall:Dev.82
+
+  - name: Run the image as container
+    docker_container:
+      name: employee-microservice-nodenpminstall
+      image: 34.73.184.207:8083/employee-microservice-nodenpminstall:Dev.82
+      state: started
+      ports: 8000:8000
