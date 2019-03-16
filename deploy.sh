@@ -3,4 +3,4 @@
 environment=$1
 BUILDNO=$2
 
-ansible-playbook -i hosts docker.yml --limit $environment --extra-vars "BUILD=$BUILDNO"
+ansible-playbook -i hosts docker.yml --limit $environment -e "build=$BUILDNO"
