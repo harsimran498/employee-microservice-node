@@ -1,6 +1,8 @@
 ---
 - hosts: all
   become: True
+  vars: 
+    my_version: "{{ BUILD }}"
 
   tasks:
   - name: Docker login to nexus
@@ -11,11 +13,11 @@
 
   - name: Pull an image from nexus
     docker_image:
-      name: 34.73.184.207:8083/employee-microservice-nodenpminstall: {{ $BUILD }}
+      name: 34.73.184.207:8083/employee-microservice-nodenpminstall: {{ my_version }}
 
   - name: Run the image as container
     docker_container:
       name: employee-microservice-nodenpminstall
-      image: 34.73.184.207:8083/employee-microservice-nodenpminstall: {{ $BUILD }}
+      image: 34.73.184.207:8083/employee-microservice-nodenpminstall: {{ my_version }}
       state: started
       ports: 8000:8000
