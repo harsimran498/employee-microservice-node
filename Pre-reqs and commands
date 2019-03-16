@@ -76,3 +76,35 @@ change authenticatoin for sonar in jenkins configure system again and enter new 
  ====
  user-pwd for nexus - admin/admin123
  =====
+ 
+ Sonar settings:
+ 
+#----- Default SonarQube server
+sonar.host.url=http://localhost:9000
+
+sonar.login=0995b5191857cbfd15df9f9ecfcd7a165638b77d
+
+sonar.projectKey=emp
+
+sonar.sources=.
+
+#sonar.scm.enabled=false
+
+#sonar.scm.disabled=true
+
+#sonar.scm.provider=git
+
+#----- Default source code encoding
+#sonar.sourceEncoding=UTF-8
+
+=====
+
+bash profile settings for sonar scanner:
+
+SONAR_HOME=/home/ec2-user/sonar-scanner/sonar-scanner-3.3.0.1492-linux
+PATH=$PATH:$SONAR_HOME/bin
+#PATH=$PATH:$HOME/bin
+
+export PATH
+
+
