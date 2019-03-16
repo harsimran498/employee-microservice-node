@@ -3,7 +3,7 @@
   become: True
   tasks:
   - debug: 
-      msg: "the value of buildno= {{ build }}"
+      msg: "the value of buildno={{ build }}"
       
   - name: Docker login to nexus
     docker_login:
@@ -13,12 +13,12 @@
 
   - name: Pull an image from nexus
     docker_image:
-      name: "34.73.184.207:8083/employee-microservice-nodenpminstall: {{ build }}"
+      name: "34.73.184.207:8083/employee-microservice-nodenpminstall:{{ build }}"
 
   - name: Run the image as container
     docker_container:
       name: employee-microservice-nodenpminstall
-      image: "34.73.184.207:8083/employee-microservice-nodenpminstall: {{ build }}"
+      image: "34.73.184.207:8083/employee-microservice-nodenpminstall:{{ build }}"
       state: started
       ports: 8000:8000
 
