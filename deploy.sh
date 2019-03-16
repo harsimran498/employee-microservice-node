@@ -2,4 +2,4 @@
 
 environment=$1
 
-ansible-playbook -i hosts docker.yml --limit $ENV
+ansible-playbook -i hosts docker.yml --limit $environment
