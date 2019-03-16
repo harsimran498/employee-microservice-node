@@ -1,6 +1,8 @@
 ---
 - hosts: all
   become: True
+  vars: 
+    build: "{{ build }}"
  
   tasks:
   - name: Docker login to nexus
