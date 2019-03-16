@@ -1,9 +1,10 @@
 ---
 - hosts: all
   become: True
-  vars: 
-    build: "{{ build }}"
- 
+  tasks:
+    - debug: 
+        msg: "the value of buildno= {{ build }}"
+  
   tasks:
   - name: Docker login to nexus
     docker_login:
