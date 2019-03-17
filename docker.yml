@@ -4,15 +4,13 @@
   tasks:
   - debug: 
       msg: "the value of buildno= {{ build }}"
-      msg: "the value of user= {{ user }}"
-      msg: "the value of password= {{ password }}"
   
   tasks:
   - name: Docker login to nexus
     docker_login:
       registry: 34.73.184.207:8083
-      username: {{ user }}
-      password: {{ password }}
+      username: admin
+      password: admin123
 
   - name: Pull an image from nexus
     docker_image:
