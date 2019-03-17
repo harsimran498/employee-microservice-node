@@ -14,7 +14,7 @@
 
   - name: Pull an image from nexus
     docker_image:
-      name: 34.73.184.207:8083/devops/employee-microservice-nodenpminstall:"{{ build }}"
+      name: 34.73.184.207:8083/devops/employee-microservice-nodenpminstall:DEPLOY.31
 
   - name: Run the image as container
     docker_container:
