@@ -4,6 +4,8 @@
   tasks:
   - debug: 
       msg: "the value of buildno= {{ build }}"
+      msg: "the value of user= {{ user }}"
+      msg: "the value of password= {{ password }}"
   
   tasks:
   - name: Docker login to nexus
