@@ -9,8 +9,8 @@
   - name: Docker login to nexus
     docker_login:
       registry: 34.73.184.207:8083
-      username: admin
-      password: admin123
+      username: {{ user}}
+      password: {{ password }}
 
   - name: Pull an image from nexus
     docker_image:
