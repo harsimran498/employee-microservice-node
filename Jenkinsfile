@@ -1,13 +1,13 @@
-   env.BUILD_BRANCH = "master"
+env.BUILD_BRANCH = "master"
    env.BUILD_NAME = "devops/employee-microservice-node"
    env.CONTAINER_NAME = "devops/employee-microservice-nodenpminstall"
-   env.DEPLOY_ENV = "DEV"
+   env.DEPLOY_ENV = "DEPLOY"
    
     node() {
 	
       stage('Checkout GIT Repository Master Branch') {
 			
-              checkout([$class: 'GitSCM', branches: [[name: "$BUILD_BRANCH"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '	ff27d625-f3c0-4d1a-84c1-931efe2f8fbd', url: 'https://github.com/harsimran498/employee-microservice-node.git']]])
+              checkout([$class: 'GitSCM', branches: [[name: "$BUILD_BRANCH"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0d7b9d79-2fed-416c-b033-99f5a99f21fd', url: 'https://github.com/harsimran498/employee-microservice-node.git']]])
 }
 
 
@@ -19,10 +19,12 @@ stage('Run NPM Tests'){
   } 
   
   stage('Sonar Analysis with Sonar Scanner'){
-      def scannerHome = tool 'Scanner'
+      
+      
+ def scannerHome = tool 'Scanner'
       sh "cd ${workspace}"
       sh "${scannerHome}/bin/sonar-scanner"
-     }
+  }
   
 
   stage("Runnning Quality Gate Step"){
@@ -90,6 +92,9 @@ node {
 } 
 
 
+stage ('Login to  Docker Nexus registry') {
+sh "docker login -u admin -p admin123 34.73.184.207:8083" }
+
    stage ('Tag Docker Image') {
       	    sh "docker image tag $CONTAINER_NAME:latest 34.73.184.207:8083/$CONTAINER_NAME:$DEPLOY_ENV.${BUILD_NUMBER}"
       }
@@ -97,17 +102,4 @@ node {
    stage ('Upload to Nexus') {
       	    sh "docker push 34.73.184.207:8083/$CONTAINER_NAME:$DEPLOY_ENV.${BUILD_NUMBER}"}
       	   
-
-
-
-/** Run Ansible yaml - docker.yml placed in build box /etc/ansible/docker.yml with ec-user only */
-
-   stage ('Dry-Run ansible playbook') {
-           sh "chmod 777 deploy.sh"
-      	   sh "./deploy.sh"
-      }   
-      	    
-      	   
-      	    
-      	    
 }
