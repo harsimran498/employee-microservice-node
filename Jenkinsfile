@@ -29,7 +29,7 @@ stage('Run NPM Tests'){
 
   stage("Runnning Quality Gate Step"){
 	  sh "sleep 30s"
-      withSonarQubeEnv('sonarqube') {
+      withSonarQubeEnv('sonar') {
         env.SONAR_CE_TASK_URL = sh(returnStdout: true, script: """cat ${workspace}/.scannerwork/report-task.txt|grep -a 'ceTaskUrl'|awk -F '=' '{print \$2\"=\"\$3}'""")
         timeout(time: 1, unit: 'MINUTES') {
             sh 'curl $SONAR_CE_TASK_URL -o ceTask.json'
