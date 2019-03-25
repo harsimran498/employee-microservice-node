@@ -1,8 +1,8 @@
+
 #!/usr/bin/sh
 
-environment=$1
-BUILDNO=$2
-user=$3
-password=$4
+BUILDNUMBER=`echo $BUILDNO | awk -F "PACKAGE/" '{print $2}' | awk -F "/" '{print $1}'`
+BUILD=DEPLOY.$BUILDNUMBER
 
-ansible-playbook -i hosts docker.yml --limit $environment -e "build=$BUILDNO user=$user password=$password"
+
+ansible-playbook -i hosts docker.yml --limit $ENVIRONMENT -e "build=$BUILD user=$user password=$password"
