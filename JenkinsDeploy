@@ -28,10 +28,10 @@ pipeline {
             steps {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '2e191fab-b375-40c8-b3d8-d29f58c63e8a',
 		usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
-                    echo "${BUILD}"
-                    echo "${ENV}"
+                    {
                     sh 'chmod 777 deploy.sh'
                     sh './deploy.sh ${BUILD} ${ENV} ${PASSWORD}'
+                    }
                 }
         }
         
