@@ -3,7 +3,7 @@ pipeline {
     agent any
       environment {
         BUILD_BRANCH = 'master'
-    }
+                  }
     
         parameters {
                 run(
@@ -16,25 +16,22 @@ pipeline {
                   choices: ['DEV', 'STAGING'],
                   description: "Choose ENV!")
                 }
-    stages {
-        stage('Checkout GIT Repository Master Branch') {
-             steps {
-		   checkout([$class: 'GitSCM', branches: [[name: "$BUILD_BRANCH"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0d7b9d79-2fed-416c-b033-99f5a99f21fd', url: 'https://github.com/harsimran498/employee-microservice-node.git']]])
-             }
-}
+        stages {
+           stage('Checkout') {
+           steps {
+		       checkout([$class: 'GitSCM', branches: [[name: "$BUILD_BRANCH"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '0d7b9d79-2fed-416c-b033-99f5a99f21fd', url: 'https://github.com/harsimran498/employee-microservice-node.git']]])
+               }
+               }
 
-        stage("build") {
-            
+        stage("Deployment") {
             steps {
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '2e191fab-b375-40c8-b3d8-d29f58c63e8a',
-		usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '2e191fab-b375-40c8-b3d8-d29f58c63e8a',
+		        usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
                     {
                     sh 'chmod 777 deploy.sh'
                     sh './deploy.sh ${BUILD} ${ENV} ${PASSWORD}'
                     }
                 }
+            }
         }
-        
-    }
-	
-}
+      }
