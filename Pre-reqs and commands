@@ -106,5 +106,9 @@ PATH=$PATH:$SONAR_HOME/bin
 #PATH=$PATH:$HOME/bin
 
 export PATH
+---
+and then
+source ./bashrc
+source ./bash_profile
 
 
