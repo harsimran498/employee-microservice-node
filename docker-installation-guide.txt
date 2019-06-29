@@ -1,0 +1,29 @@
+docker installation steps
+==========================
+If you must install a Centos package on RHEL then the package that you actually want is:
+
+docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+
+You can download it elsewhere and then bring it over to your machine. The link to the package is 'https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm`
+
+You will also need the package: container-selinux-2.36-1.gitff95335.el7.noarch.rpm as it is a dependency. It can be obtained from http://mirror.centos.org/centos/7/extras/x86_64/Packages/
+
+Before you begin, either yum remove docker-ce-selinux-17.03.0.ce-1.el7.centos.noarch.rpm or rpm -e docker-ce-selinux-17.03.0.ce-1.el7.centos.noarch.rpm as they may conflict with container-selinux-2.36-1.gitff95335.el7.noarch.rpm
+
+After the packages I mentioned are on your machine, you can install them one of two ways:
+
+yum install container-selinux-2.36-1.gitff95335.el7.noarch.rpm docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+
+rpm -ivh container-selinux-2.36-1.gitff95335.el7.noarch.rpm docker-ce-17.12.1.ce-1.el7.centos.x86_64.rpm
+
+After installation,
+
+systemctl list-unit-files | grep docker which will show docker.service
+
+systemctl enable docker
+
+systemctl start docker
+
+systemctl status docker
+
+You will see the docker service started and running.
